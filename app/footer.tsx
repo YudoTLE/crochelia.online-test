@@ -18,16 +18,17 @@ const socials = [
 
 export default function Footer(){
   return (
-    <footer className="bg-white bottom-0 shadow-inner justify-center">
+    <div className="bg-white bottom-0 shadow-inner justify-center">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <a href="https://crochelia.online" className="flex items-center mb-4 sm:mb-0 space-x-3">
+          <a href="/" className="flex items-center mb-4 sm:mb-0 space-x-3">
             <Image
-                    src="/images/half-t.png"
-                    alt=""
-                    width={200}
-                    height={100}
-                  />
+              className=" object-cover aspect-[7/1]r"
+              src="/images/half-t.png"
+              alt=""
+              width={175}
+              height={25}
+            />
           </a>
           <div className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
             {links.map((item) => (
@@ -51,6 +52,6 @@ export default function Footer(){
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };

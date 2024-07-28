@@ -17,12 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header/>
-        {children}
-        <Footer/>
-      </body>
-    </html>
+      <html lang="en">
+        <body className={inter.className}>
+          <Header/>
+          <div className="bg-gradient-to-l from-white to-rose-200 pt-7 lg:pt-20 lg:min-h-dvh">
+            {children}
+          </div>
+          <Footer/>
+        </body>
+      </html>
   );
 }
