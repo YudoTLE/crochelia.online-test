@@ -14,15 +14,15 @@ const products = [
     alt: 'Functional and stylish bag.',
     default: 'default',
     colors:[
-      {name:'Gray',src:'/images/handbag-gray.jpg',},
-      {name:'Blue',src:'/images/handbag-blue.jpg',},
-      {name:'Cream',src:'/images/handbag-cream.jpg',},
-      {name:'Green',src:'/images/handbag-green.jpg'},
-      {name:'Orange',src:'/images/handbag-orange.jpg'},
-      {name:'Pink',src:'/images/handbag-pink.jpg'},
-      {name:'Purple',src:'/images/handbag-purple.jpg'},
-      {name:'Red',src:'/images/handbag-red.jpg'},
-      {name:'White',src:'/images/handbag-white.jpg'},
+      {id:0, name:'Gray',src:'/images/handbag-gray.jpg',},
+      {id:1, name:'Blue',src:'/images/handbag-blue.jpg',},
+      {id:2, name:'Cream',src:'/images/handbag-cream.jpg',},
+      {id:3, name:'Green',src:'/images/handbag-green.jpg'},
+      {id:4, name:'Orange',src:'/images/handbag-orange.jpg'},
+      {id:5, name:'Pink',src:'/images/handbag-pink.jpg'},
+      {id:6, name:'Purple',src:'/images/handbag-purple.jpg'},
+      {id:7, name:'Red',src:'/images/handbag-red.jpg'},
+      {id:8, name:'White',src:'/images/handbag-white.jpg'},
     ]
   },
   {
@@ -69,7 +69,7 @@ export default function Product() {
   const [selectedItem, setItem] = useState(0);
   
   return (
-    <div className="bg-gradient-to-b from-main-a to-shade-a">
+    <div className="bg-gradient-to-b from-white to-shade-a">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl py-12 lg:max-w-none">
           <div className="font-opensauce mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6">
@@ -119,7 +119,7 @@ export default function Product() {
                         <fieldset className="mt-4">
                           <div className="grid grid-cols-4 items-center gap-4">
                             {products[selectedItem].colors.map((color) => (
-                                <Button onClick={() => setColor(color.src)} className="bg-white text-gray-700 ring-1 ring-gray-300 hover:bg-gray-100 focus:ring-main-b">
+                                <Button key={color.id} onClick={() => setColor(color.src)} className="bg-white text-gray-700 ring-1 ring-gray-300 hover:bg-gray-100 focus:ring-main-b">
                                   {color.name}
                                 </Button>
                               ))

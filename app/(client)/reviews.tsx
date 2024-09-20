@@ -19,7 +19,7 @@ export default function Reviews() {
   return (
     <div className="h-fit overflow-hidden py-24 bg-gradient-to-b from-shade-a to-main-a">
       <h2 className="font-roca font-semibold mx-auto pb-12 max-w-xs md:max-w-md lg:max-w-3xl text-pretty text-2xl md:text-4xl lg:text-5xl text-center text-main-b">
-          Here's What they say
+          Here&apos;s What they say
       </h2>
       <div className="m-auto max-w-7xl bg-white shadow-lg py-12 text-shade-e tracking-tight rounded-[50px]">
         <div className="font-opensauce mx-auto h-96 max-w-xl md:max-w-3xl lg:max-w-5xl">

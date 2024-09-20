@@ -1,18 +1,18 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
+import {useState } from 'react'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { Drawer, DrawerHeader, Sidebar } from 'flowbite-react'
 
 const pages = [
-  { name: 'Home', href: '/' },
-  { name: 'Collaborations', href: '/collab' },
-  { name: 'Products', href: '/product' },
-  { name: 'Workshops', href: '/workshop' },
-  { name: 'Private Class', href: '/class' },
+  { id: 0, name: 'Home', href: '/' },
+  { id: 1, name: 'Collaborations', href: '/collab' },
+  { id: 2, name: 'Products', href: '/product' },
+  { id: 3, name: 'Workshops', href: '/workshop' },
+  { id: 4, name: 'Private Class', href: '/class' },
 ]
 
-export default function avigation(){
+export default function Navigation(){
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleClose = ()=> setMobileMenuOpen(false);
@@ -59,7 +59,7 @@ export default function avigation(){
         <div className={`font-opensauce text-gray-700 hidden lg:flex lg:gap-x-14`}>
           {pages.map((item) => (
             <a 
-              key={item.name} 
+              key={item.id} 
               href={item.href} 
               className="-mx-3 block px-3 text-base leading-6 hover:text-main-b hover:font-bold"
             >

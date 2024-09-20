@@ -11,8 +11,8 @@ export default function Blog(){
         <div className="flex flex-wrap py-6 bg-gradient-to-b from-main-a to-shade-a">
             <section className="max-w-5xl mx-auto font-opensauce text-gray-800 flex flex-col items-center px-3">
             {posts.map((item) => (
-                <article className="flex flex-col shadow-lg my-4 bg-white rounded-[20px]">
-                    <a key={item.id} href={item.href} className="my-auto hover:opacity-75">
+                <article key={item.id} className="flex flex-col shadow-lg my-4 bg-white rounded-[20px]">
+                    <a href={item.href} className="my-auto hover:opacity-75">
                         <Image
                             src={item.img}
                             alt=""
