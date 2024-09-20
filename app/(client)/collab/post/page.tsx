@@ -17,8 +17,9 @@ function GetParams() {
   }
 
 export default function Post(){
-    const id = GetParams().props['children'];
+    const id = Number(GetParams().props['children']);
     const post = posts[id];
+    console.log(id+1);
     return(
         <section className="mx-auto sm:max-w-4xl flex flex-col items-center py-16 sm:py-24">
 
@@ -47,16 +48,16 @@ export default function Post(){
 
                     </a>
                 ):(
-                    <a href={"/collab/post?id="+(post.id-1)} className="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+                    <a href={"/collab/post?id="+(id-1)} className="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
                         <p className="text-lg font-bold flex items-center"><ArrowLeftIcon className="size-6 mx-2"/>Previous</p>
                     </a>
                 )}
-                {posts[id+1] == null ? (
+                {posts[id+1] === undefined ? (
                     <a className="w-1/2 bg-white shadow p-6">
 
                     </a>
                 ):(
-                    <a href={"/collab/post?id="+(post.id+1)}  className="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+                    <a href={"/collab/post?id="+(id+1)}  className="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
                         <p className="text-lg font-bold flex items-center justify-end">Next<ArrowRightIcon className="size-6  mx-2"/></p>
                     </a>
                 )}
