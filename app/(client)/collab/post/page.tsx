@@ -2,6 +2,7 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const posts = [
     {id:0, img:"/images/post1.jpg", href:"/collab/post?id=1" ,type:"Workshop", date:"August 5th, 2024", title:"Workshop di Cafe", slug:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna.." },
@@ -12,7 +13,7 @@ const posts = [
 function GetParams() {
     const searchParams = useSearchParams();
     const getId = searchParams.get('id');
-    return <>{getId}</>
+    return <Suspense>{getId}</Suspense>
   }
 
 export default function Post(){
