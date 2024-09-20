@@ -9,10 +9,14 @@ const posts = [
     {id:2, img:"/images/post3.jpg", href:"/collab/post?id=3" ,type:"Collaboration",date:"June 2nd, 2024", title:"Pattern Crochet Populer", slug:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna.." },
 ]
 
-export default function Post(){
+function GetParams() {
     const searchParams = useSearchParams();
     const id = Number(searchParams.get('id'));
-    const post = posts[id];
+    return posts[id]
+  }
+
+export default function Post(){
+    const post = GetParams();
     return(
         <section className="mx-auto sm:max-w-4xl flex flex-col items-center py-16 sm:py-24">
 
