@@ -11,12 +11,13 @@ const posts = [
 
 function GetParams() {
     const searchParams = useSearchParams();
-    const id = Number(searchParams.get('id'));
-    return posts[id]
+    const getId = searchParams.get('id');
+    return <>{getId}</>
   }
 
 export default function Post(){
-    const post = GetParams();
+    const id = GetParams().props['children'];
+    const post = posts[id];
     return(
         <section className="mx-auto sm:max-w-4xl flex flex-col items-center py-16 sm:py-24">
 
@@ -24,7 +25,7 @@ export default function Post(){
                 <Image
                     src={post.img}
                     alt=""
-                    className="lg:rounded-t-[20px] object-cover object-center max-h-96"
+                    className="lg:rounded-t-[20px] object-cover object-center max-h-52 sm:max-h-96"
                     width={1000}
                     height={500}
                 />
@@ -40,15 +41,25 @@ export default function Post(){
                 </div>
             </article>
             <div className="w-full flex text-shade-b">
-                <a href={"/collab/post?id="+(post.id-1)} className="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-                    {post.id == 0 ? (null):(
-                            <p className="text-lg font-bold flex items-center"><ArrowLeftIcon className="size-6 mx-2"/>Previous</p>
-                        )
-                    }
-                </a>
-                <a href={"/collab/post?id="+(post.id+1)}  className="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-                    <p className="text-lg font-bold flex items-center justify-end">Next<ArrowRightIcon className="size-6  mx-2"/></p>
-                </a>
+                {post.id == 0 ? (
+                    <a className="w-1/2 bg-white shadow p-6">
+
+                    </a>
+                ):(
+                    <a href={"/collab/post?id="+(post.id-1)} className="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+                        <p className="text-lg font-bold flex items-center"><ArrowLeftIcon className="size-6 mx-2"/>Previous</p>
+                    </a>
+                )}
+                {posts[id+1] == null ? (
+                    <a className="w-1/2 bg-white shadow p-6">
+
+                    </a>
+                ):(
+                    <a href={"/collab/post?id="+(post.id+1)}  className="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+                        <p className="text-lg font-bold flex items-center justify-end">Next<ArrowRightIcon className="size-6  mx-2"/></p>
+                    </a>
+                )}
+
             </div>
         </section>        
     )
