@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: "OpenSauce";
+  src: url("/fonts/OpenSauce/OpenSauceSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roca";
+  src: url("/fonts/Roca/Roca Regular.ttf");
+}
