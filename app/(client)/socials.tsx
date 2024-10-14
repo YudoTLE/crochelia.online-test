@@ -6,7 +6,7 @@ const socials = [
     {name:"Shopee", src:"/images/shopee-logo.png",href:"https://shopee.co.id/crochelia"},
     {name:"Instagram", src:"/images/instagram-logo.png",href:"https://instagram.com/crochelia.co"},
     {name:"TikTok", src:"/images/tiktok-logo.png", href:"https://tiktok.com/@crochelia.co"},
-    {name:"Youtube", src:"/images/youtube-logo.png", href:"#"},
+    {name:"Youtube", src:"/images/youtube-logo.png", href:"https://www.youtube.com/@crocheliaco"},
 ];
 
 export default function Socials(){
