@@ -15,7 +15,7 @@ export default function Post(){
     const post = posts[postId];
     return(
         <section className="mx-auto sm:max-w-4xl flex flex-col items-center py-16 sm:py-24">
-            <article className="flex flex-col shadow mt-4">
+            <article className="flex flex-col mt-4 shadow-2xl" >
                 <Image
                     src={post.img}
                     alt=""
@@ -34,22 +34,22 @@ export default function Post(){
                     <p className="text-sm sm:text-base pb-3">Vivamus sed neque nec massa scelerisque imperdiet eget id sapien. Fusce elementum mi id malesuada luctus. Proin quis lorem id leo porta interdum non ac nisl. Integer nulla sem, ultrices sed neque eget, blandit condimentum metus. Aliquam eget malesuada sapien. Curabitur aliquet orci sit amet ex tincidunt convallis. Mauris urna mi, consequat mattis mollis a, dignissim eget sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam facilisis sem diam, viverra consequat metus consequat vel. Cras a mi eu ex luctus malesuada quis eu ante. Aliquam erat volutpat.</p>
                 </div>
             </article>
-            <div className="w-full flex text-shade-b">
+            <div className="w-full flex bg-main-a text-shade-b shadow-2xl lg:rounded-b-[20px]">
                 {postId == 0 ? (
-                    <a className="w-1/2 bg-white shadow p-6">
-
+                    <a className="w-1/2 shadow p-6 lg:rounded-bl-[20px]">
+                        
                     </a>
                 ):(
-                    <a href={"/collab/post?id="+(postId-1)} className="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+                    <a href={"/collab/post?id="+(postId-1)} className="w-1/2 shadow text-left p-6 lg:rounded-bl-[20px]">
                         <p className="text-lg font-bold flex items-center"><ArrowLeftIcon className="size-6 mx-2"/>Previous</p>
                     </a>
                 )}
                 {posts[postId+1] === undefined ? (
-                    <a className="w-1/2 bg-white shadow p-6">
+                    <a className="w-1/2 shadow p-6 lg:rounded-br-[20px]">
 
                     </a>
                 ):(
-                    <a href={"/collab/post?id="+(postId+1)}  className="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+                    <a href={"/collab/post?id="+(postId+1)}  className="w-1/2 shadow text-right p-6 lg:rounded-br-[20px]">
                         <p className="text-lg font-bold flex items-center justify-end">Next<ArrowRightIcon className="size-6  mx-2"/></p>
                     </a>
                 )}
