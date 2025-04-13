@@ -156,14 +156,14 @@ export default function Product() {
                 <div className="pt-4">
                   <div className="lg:row-span-3">
                     <h2 className="sr-only">Product information</h2>
-                    {(products[selectedItem].colors.length != 0) && (
+                    {(products[selectedItem].colors.length !== 0) && (
                       <div>
                         <h3 className="text-md text-gray-900">Color Option:</h3>
                         <fieldset className="mt-4">
                           <div className="grid grid-cols-4 items-center gap-4">
-                            {products[selectedItem].colors.map((color) => (
+                            {products[selectedItem].colors.map((color, index) => (
                               <Button
-                                key={color.id}
+                                key={index}
                                 onClick={() => {
                                   setCustomImageUrl(color.imageUrl)
                                   setCustomColorName(color.name)
