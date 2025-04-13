@@ -13,7 +13,7 @@ const PRODUCT_QUERY = defineQuery(`*[
   _type == "product"
 ]{
   _id,
-  "title": coalesce(title, "Untitled Product"),
+  "name": coalesce(name, "Unnamed Product"),
   "description": coalesce(description, []),
   "image": coalesce(image, null),
   "colors": select(

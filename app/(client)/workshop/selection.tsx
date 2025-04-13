@@ -13,7 +13,7 @@ const WORKSHOP_QUERY = defineQuery(`*[
   _type == "workshop"
 ]{
   _id,
-  "name": coalesce(name, "Untitled Workshop"),
+  "name": coalesce(name, "Unnamed Workshop"),
   "description": coalesce(description, []),
   "date": coalesce(date, now()),
   "location": coalesce(location, "Unknown Location"),
