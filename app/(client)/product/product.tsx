@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { EMPTY_ARRAY } from "sanity";
+import { PortableTextBlock } from 'sanity';
 
 const PRODUCT_QUERY = defineQuery(`*[
   _type == "product"
