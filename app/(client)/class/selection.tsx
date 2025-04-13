@@ -9,7 +9,7 @@ const classes = [
     location: 'Online',
     benefit:['Downloadable guides', 'Flexible class hours', 'Beginner-friendly class'],
     src: '/images/chunky-bag.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
   {
     id:2,
@@ -18,7 +18,7 @@ const classes = [
     location: 'Offline',
     benefit:['Free patterns', 'Goodies and gifts from our partner', 'Opportunities for networking'],
     src: '/images/cloud-bag2.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
   {
     id:3,
@@ -27,7 +27,7 @@ const classes = [
     location: 'Offline',
     benefit:['No tools required', 'Goodies and gifts from our partner', 'Opportunities for networking'],
     src: '/images/product3.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
   {
     id:4,
@@ -36,7 +36,7 @@ const classes = [
     location: 'Offline',
     benefit:['No tools required', 'Goodies and gifts from our partner', 'Opportunities for networking'],
     src: '/images/product3.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
   {
     id:5,
@@ -45,7 +45,7 @@ const classes = [
     location: 'Online',
     benefit:['Downloadable guides', 'Flexible class hours', 'Beginner-friendly class'],
     src: '/images/chunky-bag.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
   {
     id:6,
@@ -54,7 +54,7 @@ const classes = [
     location: 'Offline',
     benefit:['Free patterns', 'Goodies and gifts from our partner', 'Opportunities for networking'],
     src: '/images/cloud-bag2.jpg',
-    href: '#',
+    href: 'https://wa.me/6285175017713?text=Hi%20Crochelia!%20Aku%20mau%20tanya-tanya%20soal%20private%20class%2Fworkshopnya%20dong!',
   },
 ]
 export default function Selection() {
@@ -97,7 +97,7 @@ export default function Selection() {
                       {item.price}
                     </p>
                     <button className="absolute inset-x-0 bottom-4 rounded-full bg-main-b text-white p-2 mx-4">
-                      <a className="font-roca text-lg tracking-wide" href="#">
+                      <a className="font-roca text-lg tracking-wide" href="http://wa.me/6285175017713">
                           Pick this class
                       </a>  
                     </button>

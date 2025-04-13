@@ -19,7 +19,16 @@ export default function Navigation(){
 
   return (
   <header className="bg-white shadow-lg transition ease-in-out duration-100 header fixed x-0 top-0 left-0 right-0 z-50">
-      <nav aria-label="Global" className="mx-auto flex items-center justify-between p-4 lg:p-6 max-w-5xl">
+    <div
+      className="absolute inset-y-0 left-0 w-full bg-[url('/images/nav-shade-left.png')] bg-cover bg-left z-[-1]"
+      style={{ transform: "translateX(min(calc(30% - 396px), 0px))" }}
+    ></div>
+    <div
+      className="absolute inset-y-0 right-0 w-full bg-[url('/images/nav-shade-right.png')] bg-cover bg-right z-[-1]"
+      style={{ transform: "translateX(max(calc(396px - 30%), 0px))" }}
+    ></div>
+    <div className="absolute inset-0 bg-[url('/images/nav-pattern.png')] bg-repeat-x bg-[length:auto_100%] z-[-1]"></div>
+      <nav aria-label="Global" className="mx-auto flex items-center justify-between p-4 lg:p-6 max-w-5xl z-10">
         <div className="hidden lg:flex">
           <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Crochelia</span>
@@ -32,7 +41,7 @@ export default function Navigation(){
                 alt=""
                 width={200}
                 height={200}
-            />
+              />
             </a>
         </div>
         <div className="flex lg:hidden">

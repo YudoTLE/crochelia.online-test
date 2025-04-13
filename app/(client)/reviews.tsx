@@ -43,7 +43,7 @@ export default function Reviews() {
         </div>
         <div className="pt-6 text-center">
           <button className="transition duration-150 ease-in-out rounded-full bg-main-b px-3 py-2 text-white hover:bg-white hover:text-main-b hover:outline hover:scale-110 delay-150">
-              <a className="font-roca text-md sm:text-lg lg:text-3xl py-5 m-5" href="#">
+              <a className="font-roca text-md sm:text-lg lg:text-3xl py-5 m-5" href="http://wa.me/6285175017713">
                   Register Now
               </a>  
           </button>

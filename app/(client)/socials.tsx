@@ -19,6 +19,7 @@ export default function Socials(){
                 <div className="basis-1/4">
                     <div className="grid grid-cols-4 lg:grid-cols-2 mx-auto gap-4 lg:gap-12 w-fit">
                         {socials.map((item) => (
+                            <a key={item.name} href={item.href}>
                             <Image
                             key={item.name}
                             alt=""
@@ -27,6 +28,7 @@ export default function Socials(){
                             height={64}
                             className="aspect-square object-contain transition duration-150 ease-in-out hover:scale-125 lg:scale-110"
                             />
+                            </a>
                         ))}
                     </div>
                 </div>
