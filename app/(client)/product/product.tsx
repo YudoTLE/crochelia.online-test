@@ -13,14 +13,17 @@ const PRODUCT_QUERY = defineQuery(`*[
   _type == "product"
 ]{
   _id,
-  title: coalesce(title, "Untitled Product"),
-  description: coalesce(description, []),
-  image: coalesce(image, null),
-  colors: coalesce(colors, []).[]{
-    name: coalesce(name, "Unnamed Color"),
-    image: coalesce(image, null)
-  },
-  href: coalesce(href, "#")
+  "title": coalesce(title, "Untitled Product"),
+  "description": coalesce(description, []),
+  "image": coalesce(image, null),
+  "colors": select(
+    defined(colors) => colors[]{
+      "name": coalesce(name, "Unnamed Color"),
+      "image": coalesce(image, null)
+    },
+    []
+  ),
+  "href": coalesce(href, "#")
 }`)
 
 type SanityImageAsset = {

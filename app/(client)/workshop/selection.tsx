@@ -13,12 +13,12 @@ const WORKSHOP_QUERY = defineQuery(`*[
   _type == "workshop"
 ]{
   _id,
-  name: coalesce(name, "Untitled Workshop"),
-  description: coalesce(description, []),
-  date: coalesce(date, now()),
-  location: coalesce(location, "Unknown Location"),
-  image: coalesce(image, null),
-  href: coalesce(href, "#")
+  "name": coalesce(name, "Untitled Workshop"),
+  "description": coalesce(description, []),
+  "date": coalesce(date, now()),
+  "location": coalesce(location, "Unknown Location"),
+  "image": coalesce(image, null),
+  "href": coalesce(href, "#")
 }`)
 
 type SanityImageAsset = {
