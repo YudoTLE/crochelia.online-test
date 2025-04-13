@@ -7,6 +7,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { format } from "date-fns";
 import { enGB } from 'date-fns/locale'
+import { PortableTextBlock } from 'sanity';
 
 const WORKSHOP_QUERY = defineQuery(`*[
   _type == "workshop"
@@ -19,6 +20,28 @@ const WORKSHOP_QUERY = defineQuery(`*[
   image,
   href
 }`)
+
+type SanityImageAsset = {
+  _ref: string;
+  _type: 'reference';
+};
+type SanityImage = {
+  _type: 'image';
+  asset: SanityImageAsset;
+};
+type RawWorkshopProps = {
+  _id: string;
+  name?: string;
+  description?: PortableTextBlock[];
+  date?: string;
+  location?: string;
+  image?: SanityImage;
+  href?: string;
+};
+type WorkshopProps = RawWorkshopProps & {
+  imageUrl?: string;
+  dateString?: string;
+};
 
 const WorkshopSkeleton = () => (
   <div className="animate-pulse relative rounded-lg bg-white w-80 mx-auto">
@@ -43,19 +66,22 @@ const WorkshopSkeleton = () => (
 );
 
 export default function Selection() {
-  const [loading, setLoading] = useState(true)
-  const [workshops, setWorkshops] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true)
+  const [workshops, setWorkshops] = useState<WorkshopProps[]>([]);
 
   useEffect(() => {
-    client.fetch(WORKSHOP_QUERY).then((data) => {
+    client.fetch<RawWorkshopProps[]>(WORKSHOP_QUERY).then((data) => {
       const processedData = data.map((workshop) => ({
         ...workshop,
-        imageUrl: workshop.image ? urlFor(workshop.image)?.url() : '',
-        dateString: format(new Date(workshop.date), "EEEE, do MMMM yyyy", { locale: enGB }),
+        imageUrl: workshop.image?.asset?._ref 
+          ? urlFor(workshop.image)?.url() ?? '' 
+          : '',
+        dateString: workshop.date 
+          ? format(new Date(workshop.date), "EEEE, do MMMM yyyy", { locale: enGB }) 
+          : 'Date not set',
       }));
-
       setWorkshops(processedData);
-      setLoading(false)
+      setLoading(false);
     });
   }, []);
 

@@ -22,6 +22,33 @@ const PRODUCT_QUERY = defineQuery(`*[
   href
 }`)
 
+type SanityImageAsset = {
+  _ref: string;
+  _type: 'reference';
+};
+type SanityImage = {
+  _type: 'image';
+  asset: SanityImageAsset;
+};
+type ProductColor = {
+  name?: string;
+  image?: SanityImage;
+  imageUrl?: string;
+};
+type RawProductProps = {
+  _id: string;
+  name?: string;
+  description?: PortableTextBlock[];
+  image?: SanityImage;
+  colors?: ProductColor[];
+  href?: string;
+};
+
+type ProductProps = RawProductProps & {
+  imageUrl?: string;
+  colors?: (ProductColor & { imageUrl?: string })[];
+};
+
 const ProductSkeleton = () => (
   <div className="mx-auto group relative animate-pulse">
     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-300 lg:aspect-none cursor-pointer">
@@ -42,12 +69,12 @@ export default function Product() {
   const [customColorName, setCustomColorName] = useState('');
   const [customImageUrl, setCustomImageUrl] = useState('');
   const [selectedItem, setItem] = useState(0);
-  const [loading, setLoading] = useState(true)
-  const [products, setProducts] = useState([])
-
-  useState(() => {
-    client.fetch(PRODUCT_QUERY).then((data) => {
-      const processedData = data.map((product) => ({
+  const [loading, setLoading] = useState<boolean>(true);
+  const [products, setProducts] = useState<ProductProps[]>([]); // Explicit type
+  
+  useEffect(() => {
+    client.fetch<RawProductProps[]>(PRODUCT_QUERY).then((data) => {
+      const processedData: ProductProps[] = data.map((product) => ({
         ...product,
         imageUrl: product.image ? urlFor(product.image)?.url() : '',
         colors: product.colors?.map((color) => ({
@@ -55,12 +82,10 @@ export default function Product() {
           imageUrl: color.image ? urlFor(color.image)?.url() : '',
         })) ?? [],
       }));
-
       setProducts(processedData);
-      setLoading(false)
-      console.log(processedData)
+      setLoading(false);
     });
-  }, [])
+  }, []);
   
   return (
     <div className="bg-gradient-to-b from-white to-shade-a">
