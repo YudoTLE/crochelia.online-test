@@ -13,12 +13,12 @@ const WORKSHOP_QUERY = defineQuery(`*[
   _type == "workshop"
 ]{
   _id,
-  name,
-  description,
-  date,
-  location,
-  image,
-  href
+  name: coalesce(name, "Untitled Workshop"),
+  description: coalesce(description, []),
+  date: coalesce(date, now()),
+  location: coalesce(location, "Unknown Location"),
+  image: coalesce(image, null),
+  href: coalesce(href, "#")
 }`)
 
 type SanityImageAsset = {
@@ -31,16 +31,16 @@ type SanityImage = {
 };
 type RawWorkshopProps = {
   _id: string;
-  name?: string;
-  description?: PortableTextBlock[];
-  date?: string;
-  location?: string;
-  image?: SanityImage;
-  href?: string;
+  name: string;
+  description: PortableTextBlock[];
+  date: string;
+  location: string;
+  image: SanityImage;
+  href: string;
 };
 type WorkshopProps = RawWorkshopProps & {
-  imageUrl?: string;
-  dateString?: string;
+  imageUrl: string;
+  dateString: string;
 };
 
 const WorkshopSkeleton = () => (
@@ -76,9 +76,7 @@ export default function Selection() {
         imageUrl: workshop.image?.asset?._ref 
           ? urlFor(workshop.image)?.url() ?? '' 
           : '',
-        dateString: workshop.date 
-          ? format(new Date(workshop.date), "EEEE, do MMMM yyyy", { locale: enGB }) 
-          : 'Date not set',
+        dateString: format(new Date(workshop.date), "EEEE, do MMMM yyyy", { locale: enGB }),
       }));
       setWorkshops(processedData);
       setLoading(false);

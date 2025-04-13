@@ -13,14 +13,14 @@ const PRODUCT_QUERY = defineQuery(`*[
   _type == "product"
 ]{
   _id,
-  name,
-  description,
-  image,
-  colors[]{
-    name,
-    image
+  title: coalesce(title, "Untitled Product"),
+  description: coalesce(description, []),
+  image: coalesce(image, null),
+  colors: coalesce(colors, []).[]{
+    name: coalesce(name, "Unnamed Color"),
+    image: coalesce(image, null)
   },
-  href
+  href: coalesce(href, "#")
 }`)
 
 type SanityImageAsset = {
@@ -32,22 +32,22 @@ type SanityImage = {
   asset: SanityImageAsset;
 };
 type ProductColor = {
-  name?: string;
-  image?: SanityImage;
-  imageUrl?: string;
+  name: string;
+  image: SanityImage;
+  imageUrl: string;
 };
 type RawProductProps = {
   _id: string;
-  name?: string;
-  description?: PortableTextBlock[];
-  image?: SanityImage;
-  colors?: ProductColor[];
-  href?: string;
+  name: string;
+  description: PortableTextBlock[];
+  image: SanityImage;
+  colors: ProductColor[];
+  href: string;
 };
 
 type ProductProps = RawProductProps & {
-  imageUrl?: string;
-  colors?: (ProductColor & { imageUrl?: string })[];
+  imageUrl: string;
+  colors: (ProductColor & { imageUrl: string })[];
 };
 
 const ProductSkeleton = () => (
@@ -78,10 +78,10 @@ export default function Product() {
       const processedData: ProductProps[] = data.map((product) => ({
         ...product,
         imageUrl: product.image ? urlFor(product.image)?.url() : '',
-        colors: product.colors?.map((color) => ({
+        colors: product.colors.map((color) => ({
           ...color,
           imageUrl: color.image ? urlFor(color.image)?.url() : '',
-        })) ?? [],
+        })),
       }));
       setProducts(processedData);
       setLoading(false);
@@ -180,7 +180,7 @@ export default function Product() {
                     <button className="mx-auto block w-fit px-10 py-2 bottom-4 rounded-full bg-main-b text-white m-4">
                       <a
                         className="font-roca text-lg tracking-wide"
-                        href={products[selectedItem]?.href || "#"
+                        href={products[selectedItem].href
                       }>
                         Buy Now
                       </a>  
